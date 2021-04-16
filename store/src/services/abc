@@ -1,0 +1,230 @@
+viewproduct
+ {/*  
+                <div>
+                <h2>products</h2>
+                <div className="row">
+                 <div className="col-md-2" id="sidebar">
+                            <li className="list-group-item" onClick={this.adduser}>signup</li>
+                            <li className="list-group-item" onClick={this.viewproducts}>products</li>
+                            </div>
+                {this.state.products.map(product=>
+                    
+                    <div>
+                   
+                  
+                           
+                          <div className="col-md-4">
+                            <img src="https://media.wired.com/photos/5bcea2642eea7906bba84c67/master/w_2560%2Cc_limit/iphonexr.jpg" alt="Girl in a jacket" width="200" height="300"></img>    
+                          </div>
+     
+                          <div className="col-md-4">
+                              <h4 className="title">{product.productname}</h4>
+                              <span className="brand">{product.brand}</span><br></br>
+                              <span className="price">{product.listprice}</span><br></br>
+                              <span className="ram">{product.ram}</span><br></br>
+                              <span className="rom">{product.rom}</span><br></br>
+                              <span className="weight">{product.weight}</span><br></br>
+                              <span className="publisher">{product.publisher}</span><br></br>
+                              <span className="description"></span> 
+                          </div>
+                         
+                    </div>
+
+                    )}
+
+                    </div> */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="#">Admin</a>
+    
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav">
+      <li className="nav-item">
+        <Link to ="list"><span class="navbar-brand mb-0 h1">list</span></Link>
+        </li>
+        <li className="nav-item">
+        <Link to="Adminproducts"><span class="navbar-brand mb-0 h1">productslist</span></Link>
+        </li>
+        <li className="nav-item">
+        <Link to ="addproduct"><span class="navbar-brand mb-0 h1">Add product</span></Link>
+        </li>
+        <li className="nav-item">
+        <Link to="updateproduct"><span class="navbar-brand mb-0 h1">update product</span></Link>
+        </li>
+      {/*   <li className="nav-item">
+          <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> */}
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn=document.querySelector('.menu-toggle');
+  const nav=document.querySelector('nav');
+  btn.addEventListner('click',()=>{
+    nav.classList.toggle('active');
+  });
+</script>
+
+
+
+
+
+
+
+
+
+addproduct
+
+<section  className="container-fluid">
+          <section className="row justify-content-center">
+            <section className="col-12 col-sm-8 col-md-8">
+            <form className="form-container">
+              <h1>Add product</h1>
+              <div className="product-details">
+              <div className="form-group">
+    <label htmlfor="productname">  Product  CODE </label>
+    <input type="text" className="form-control" id="productCODE"  placeholder="Enter productcode"
+    value={this.state.productid} onChange={this.changeproductidhandler}/>
+      </div>
+                <div className="form-group">
+    <label htmlfor="productname">  Productname </label>
+    <input type="text" className="form-control" id="productname"  placeholder="Enter productname"
+    value={this.state.productname} onChange={this.changeproductnamenamehandler}/>
+      </div>
+      <div className="form-group">
+    <label htmlfor="brand">  Brand </label>
+    <input type="text" className="form-control" id="brand"  placeholder="Enter Brand name"
+    value={this.state.Brand} onChange={this.changeBrandnamenamehandler}/>
+      </div>
+      <div className="form-group">
+    <label htmlfor="Ram">  Ram </label>
+    <input type="text" className="form-control" id="Ram"  placeholder="Ram"
+    value={this.state.ram} onChange={this.changeRamhandler}/>
+      </div>
+      <div className="form-group">
+    <label htmlfor="Rom">  Rom </label>
+    <input type="text" className="form-control" id="Rom"  placeholder="Rom"
+    value={this.state.rom} onChange={this.changeRoomhandler}/>
+      </div>
+      <div className="form-group">
+    <label htmlfor="Rom">  Weight </label>
+    <input type="text" className="form-control" id="weight"  placeholder="weight"
+    value={this.state.weight} onChange={this.changeweighthandler}/>
+      </div>
+      <div className="form-group">
+    <label htmlfor="Rom">  Dealer </label>
+    <input type="text" className="form-control" id="Dealer"  placeholder="Dealer"
+    value={this.state.publisher} onChange={this.changeDealerthandler}/>
+      </div>
+
+      <div className="form-group">
+    <label htmlfor="Rom">  Price </label>
+    <input type="text" className="form-control" id="Price"  placeholder="Price"
+    value={this.state.listprice} onChange={this.changepricehandler}/>
+      </div>
+      <div className="form-group">
+    <label htmlfor="Rom">  Image url </label>
+    <input type="text" className="form-control" id="img"  placeholder="img url"
+    value={this.state.img} onChange={this.changeimghandler}/>
+      </div>
+               
+      
+              </div>
+              <div className="form-group">
+    <label htmlfor="Rom">  Discription </label>
+    <textarea type="text" className="form-control" id="discription"  placeholder="Discription"
+    value={this.state.discription} onChange={this.changediscriptionhandler}/>
+      </div>
+      <button  id="btn" className=" btn btn-primary" onClick={this.Save}>addproduct</button>
+      <Link to ="Admin">Back</Link>
+           </form> 
+
+     </section>
+     </section>
+     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+     loginform
+      <div className="body">
+              <div id="login">
+             {/*  <h3 class="text-center text-white pt-5">Login form</h3> */}
+              <div className="container">
+              <div id="login-row" className="row justify-content-center align-items-center">
+              <div id="login-column" className="col-md-6">
+              <div id="login-box" className="col-md-12">
+              <form id="login-form" className="form" action="" method="post">
+              
+                            <div class="form-group">
+                            <label for="username" className="text-info">Username:</label><br></br>
+                            <input type="text" name="username" id="username" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                            <label for="password" className="text-info">Password:</label><br></br>
+                                <input type="text" name="password" id="password" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                               {/* < label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"/>
+                                </span></label> */}<br></br>
+                                <input id="btn" type="submit" name="submit" className="btn btn-info btn-md" value="submit"/>
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a className="text-info" onClick={this.adduser}>Register here</a>
+                            </div>
+              </form>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+            </div>
+
+
+
+            add username
+
+
+
+             
