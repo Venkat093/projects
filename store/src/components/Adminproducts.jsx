@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import productservices from '../services/productservices'
 import Pagination from '../components/common/paginagtion';
 import {paginate} from '../utils/paginate' ;
+import Adminfooter from "../components/adminfooter";
+import Admin from "../components/Admin"
  class Adminproducts extends Component {
     constructor(props) {
         super(props)
@@ -32,6 +34,8 @@ import {paginate} from '../utils/paginate' ;
         const {pageSize,currentPage,products :allproducts}=this.state;
         const products= paginate(allproducts, currentPage,pageSize); 
         return (
+            <React.Fragment>
+<Admin/>
             <div>
                 <Link to ="Admin">Back</Link>
                  <table className="table striped bordered hover">
@@ -83,6 +87,8 @@ import {paginate} from '../utils/paginate' ;
 
             />
             </div>
+            <Adminfooter/>
+            </React.Fragment>
 
 
         )

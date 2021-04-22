@@ -4,13 +4,13 @@ import '../App.css';
 import Pagination from '../components/common/paginagtion';
 import {paginate} from '../utils/paginate' ;
 import Headercomponent from './Headercomponent'
-import Footercomponent from './footercomponent';
+
 class productslist extends Component {
     constructor(props) {
         super(props)
 
         this.state ={
-            products:[], 
+            products:[],
             currentPage:1,
             pageSize:6
         }
@@ -95,7 +95,6 @@ class productslist extends Component {
 
             />
             </div>
-            <Footercomponent />
             </React.Fragment>
         )
     }

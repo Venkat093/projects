@@ -16,15 +16,15 @@ import { Link } from 'react-router-dom';
     }
     render() {
         return (
-           <nav className="navbar navbar-custom navbar-expand-md navbar-dark bg-dark shadow-sm">
+           <nav1 className="navbar navbar-custom navbar-expand-md navbar-dark bg-dark shadow-sm">
                <Link to="/">
                <span class="navbar-brand mb-0 h1">Home</span>
                </Link>
-              <ul className="navbar-nav align-items-center">
-                  <li className="nav-item ml-5">
+              <ol className="navbar-nav align-items-center">
+              <li1 className="nav-item ml-5">
                   <Link to="products" className="nav-link">products</Link>
-                  </li>
-              </ul>
+                  </li1>
+              </ol>
               <Link to="cart" className="ml-auto">
                       <button>
                           <i className="fas fa-cart-plus"/>
@@ -33,7 +33,7 @@ import { Link } from 'react-router-dom';
                   </Link>
                   <Link to="login" className="nav-link"><span class="navbar-brand mb-0 h1">login</span></Link>
 
-           </nav>
+           </nav1>
         )
     }
 }

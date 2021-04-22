@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
 import productservices from '../../services/productservices';
+import Admin from '../Admin';
  class updateproduct extends Component {
     constructor(props) {
         super(props)
@@ -99,11 +100,13 @@ import productservices from '../../services/productservices';
     }
     render() {
         return (
+          <React.Fragment>
+          <Admin/>
           
           <section className="container-fluid">
           <section className="row justify-content-center">
             <section className="col-12 col-sm-8 col-md-8">
-            <form className="form-container">
+            <form className="form-container1">
               <h1>Update product</h1>
               <div className="user-details">
                 <div className="form-group">
@@ -167,6 +170,7 @@ import productservices from '../../services/productservices';
      </section>
      </section>
      </section>
+     </React.Fragment>
 
 
         )

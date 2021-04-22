@@ -4,19 +4,22 @@ import '../App.css';
 import Pagination from '../components/common/paginagtion';
 import {paginate} from '../utils/paginate' ;
 import Headercomponent from './Headercomponent'
-import Footercomponent from './footercomponent';
+import { values } from 'lodash';
+
 class productslist extends Component {
     constructor(props) {
         super(props)
 
         this.state ={
-            products:[], 
+            Cart:[],
+            products:[],
             currentPage:1,
             pageSize:6
         }
         this.viewproduct=this.viewproduct.bind(this);
         this.Home=this.Home.bind(this);
         this.cart=this.cart.bind(this);
+        this.addtocart=this.addtocart.bind(this);
       
       
     }
@@ -43,6 +46,22 @@ class productslist extends Component {
     {
         this.props.history.push(`/product/${id}`);
     }
+
+    addtocart = (id) =>{
+
+        let tempProduct=[...this.state.products];
+        const index=tempProduct.indexOf(productservices.getproductbyid(id));
+        const product=tempProduct[index];
+        product.inCart=true;
+        const price=product.listprice;
+
+        this.setState(()=>{
+            return {products:tempProduct,Cart:[...this.state.Cart,product]}
+        })
+        
+         
+    }
+
    
    //`/products/${brand}`
     render() {
@@ -80,7 +99,7 @@ class productslist extends Component {
                              <h2>{product.productname}</h2>
                             <p className="price" >{product.listprice}<span>$</span></p>
                             <p className="brand">{product.brand}</p>
-                            <div className="btn " onClick={this.cart}> Add to cart</div>
+                            <div className="btn " disabled={inCart} onClick={()=>{value.addtocart(id)}}>{inCart===true ?(<span>InCart</span>):(<span>Add to cart</span>)}</div>
                            
                              </div>   
                          </div>
@@ -95,7 +114,6 @@ class productslist extends Component {
 
             />
             </div>
-            <Footercomponent />
             </React.Fragment>
         )
     }

@@ -15,6 +15,8 @@ import updateproduct from './components/updation/updateproduct';
 import Adminproducts from './components/Adminproducts';
 import brandlist from './components/brandlist';
 import demo from './components/demo';
+import addblogs from './components/addblogs';
+import blogs from './components/blogs';
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
                <Route path="/updateproduct/:id"  component={updateproduct}></Route>
                <Route path="/Adminproducts"  component={Adminproducts}></Route>
                <Route path="products/:brand" component={brandlist}></Route>
+               <Route path="/addblog" component={addblogs}></Route>
+               <Route path="/blogs"          component={blogs}></Route>
                </div>
             
              </Switch>

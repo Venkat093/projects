@@ -1,27 +1,11 @@
 import React, { Component } from 'react'
-import '../App.css';
 
- class footercomponent extends Component {
-
-    constructor(props) {
-        super(props)
-
-        this.state ={
-            
-        }
-        
-        this.viewproducts=this.viewproducts.bind(this);
-    }
-  
-    viewproducts()
-    {
-        this.props.history.push('/products')
-    }
-   
+export default class adminfooter extends Component {
     render() {
         return (
-            <div className="main-footer">
-                <div className="container">
+            <div >
+                <div  className="admin-footer">
+                <div  id="adminfo" className="container">
                     <div className="row">
                        <div className="col-md-4">
                           <ol className="list-unstyled">
@@ -54,7 +38,7 @@ import '../App.css';
                         </div>
                 </div>
             </div>
+            </div>
         )
     }
- }
- export default footercomponent;
+}

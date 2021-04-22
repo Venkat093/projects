@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import Headercomponent from './Headercomponent';
 import '../App.css';
 import {Carousel} from 'react-bootstrap';
-
+import productservices from '../services/productservices';
+import Footercomponent from './footercomponent';
 
 class HomeComponent extends Component {
     constructor(props) {
         super(props)
 
         this.state ={
-            
+          products:[] 
         }
         this.list=this.list.bind(this);
         this.addproduct=this.addproduct.bind(this);
@@ -39,6 +40,12 @@ class HomeComponent extends Component {
         this.props.history.push('/products')
     }
    
+    componentDidMount()
+     {
+         productservices.getproducts().then((res) => {
+             this.setState({products :res.data});
+         });
+     } 
    
     render() {
         return (
@@ -52,19 +59,21 @@ class HomeComponent extends Component {
                        <div classNama="panel-body ">
                    <Carousel>
                 <Carousel.Item>
-          <img id="coimg"id="coimg" className="d-block w-100 img-responsive" src="https://cutt.ly/HvuUnOS" alt="First slide"/>
+          <img id="coimg"id="coimg"  onClick={this.viewproducts} className="d-block w-100 img-responsive" src="https://cutt.ly/HvuUnOS" alt="First slide"/>
            <Carousel.Caption>
              
              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
            </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item>
-          <img id="coimg" className="d-block w-100 img-responsive " src="https://cutt.ly/HvuUnOS" alt="First slide"/>
+
+                {this.state.products.slice(0,2).map(product=>
+                <Carousel.Item  key={product.id}>
+          <img id="coimg" className="d-block w-100 img-responsive " src={product.img} alt="First slide"/>
            <Carousel.Caption>
              
              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
            </Carousel.Caption>
-                </Carousel.Item>
+                </Carousel.Item>  )}
                 <Carousel.Item>
           <img id="coimg"  className="d-block w-100 img-responsive" src="https://cutt.ly/HvuUnOS" alt="First slide"/>
            <Carousel.Caption>
@@ -81,31 +90,46 @@ class HomeComponent extends Component {
                </div>
                <hr></hr>
              <div className="container">
-
+             <div className="row">
+             <div class="column">
+    <div class="card1">
+      <img className="styel" src="https://www.w3schools.com/w3images/team1.jpg" alt="Jane"/>
+      <div class="container">
+        <h2>Jane Doe</h2>
+        <p class="title">CEO &amp; Founder</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card1">
+      <img className="styel" src="https://www.w3schools.com/w3images/team1.jpg" alt="Jane"/>
+      <div class="container">
+        <h2>Jane Doe</h2>
+        <p class="title">CEO &amp; Founder</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card1">
+      <img className="styel" src="https://www.w3schools.com/w3images/team1.jpg" alt="Jane"/>
+      <div class="container">
+        <h2>Jane Doe</h2>
+        <p class="title">CEO &amp; Founder</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+             </div>
      
-               <div className="row">
-                   <div className="col-md-4">
-                       <div className="panel panel-default">
-                           <div className="panel-body">
-                        
-                           </div>
-                       </div>
-                   </div>
-                   <div className="col-md-4">
-                       <div className="panel panel-default">
-                           <div className="panel-body">
-                           
-                           </div>
-                       </div>
-                   </div>
-                   <div className="col-md-4">
-                       <div className="panel panel-default">
-                           <div className="panel-body">
-                           
-                           </div>
-                       </div>
-                   </div>
-               </div>
+             
             </div>
                   <div className="home-headline"><span>featured mobiles</span></div>
                   <hr id="hr1"/>
@@ -197,6 +221,7 @@ class HomeComponent extends Component {
                  </div>
 
             </div>
+          <Footercomponent />
             </React.Fragment>
         )
     }
