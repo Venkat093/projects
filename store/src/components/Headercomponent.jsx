@@ -1,15 +1,30 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-
+import authservices from '../services/authservices';
  class Headercomponent extends Component {
     constructor(props) {
         super(props)
 
         this.state ={
-            
-        }
+            user: {
+                username: "",
+                jwt: "",
+                role: "",
+              }, 
+        };
         this.adduser=this.adduser.bind(this);
     }
+    componentDidMount() {
+        let user = authservices.getCurrentUser();
+        if (user === null) {
+          let username = "";
+          let jwt = "";
+          let role = "";
+          this.setState({ username, jwt, role });
+        } else {
+          this.setState({ user });
+        }
+      }
     adduser()
     {
       this.props.history.push('/signup'); 
@@ -31,7 +46,24 @@ import { Link } from 'react-router-dom';
                           my cart
                       </button>
                   </Link>
-                  <Link to="login" className="nav-link"><span class="navbar-brand mb-0 h1">login</span></Link>
+                  {this.state.user.role===""?(
+                    <div>
+                    <Link to="login" className="nav-link"><span class="navbar-brand mb-0 h1">login</span></Link>
+                    </div>    ) :(
+                   <div>   <Link to="" className="nav-link"><span class="navbar-brand mb-0 h1"></span></Link>
+                    </div>  
+                    )}
+
+                    {this.state.user.role==="" ?(
+                      <div>
+                      <Link to="signup" className="nav-link"><span class="navbar-brand mb-0 h1">Signup</span></Link>
+                      </div>   
+                    ) :(
+                      <div>
+                      <Link to="logout" className="nav-link"><span class="navbar-brand mb-0 h1">logout</span></Link>
+                      </div>
+                    )}
+                  
 
            </nav1>
         )

@@ -18,7 +18,7 @@ class productslist extends Component {
         this.Home=this.Home.bind(this);
         this.cart=this.cart.bind(this);
       
-      
+           
     }
     cart()
     {

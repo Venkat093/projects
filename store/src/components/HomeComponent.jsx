@@ -4,20 +4,27 @@ import '../App.css';
 import {Carousel} from 'react-bootstrap';
 import productservices from '../services/productservices';
 import Footercomponent from './footercomponent';
+import blogservices from '../services/blogservices';
 
 class HomeComponent extends Component {
     constructor(props) {
         super(props)
 
         this.state ={
-          products:[] 
+          products:[] ,
+          blogs:[],
         }
         this.list=this.list.bind(this);
         this.addproduct=this.addproduct.bind(this);
         this.viewproducts=this.viewproducts.bind(this);
         this.login=this.login.bind(this);
         this.Admin=this.Admin.bind(this);
-    
+        this.Adminhome=this.Adminhome.bind(this);
+        this.view=this.view.bind(this);
+    }
+    view()
+    {
+      this.props.history.push('/ublogs')
     }
     list()
     {
@@ -30,6 +37,10 @@ class HomeComponent extends Component {
    Admin()
     {
         this.props.history.push('/Admin');
+    }
+    Adminhome()
+    {
+        this.props.history.push('/Adminhome');
     }
     addproduct()
     {
@@ -45,14 +56,18 @@ class HomeComponent extends Component {
          productservices.getproducts().then((res) => {
              this.setState({products :res.data});
          });
+         blogservices.getproducts().then((res)=>{
+           this.setState({blogs:res.data})
+         })
      } 
+     
    
     render() {
         return (
         <React.Fragment>
             <Headercomponent /> 
 
-            <div className="container ">
+            <div className="container-fluid">
                <div className="row">
                    <div className="col-md-8">
                        <div className="panel panel-default">
@@ -81,15 +96,15 @@ class HomeComponent extends Component {
              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
            </Carousel.Caption>
                 </Carousel.Item>
-                </Carousel>
+                </Carousel >
                    </div>
                    </div></div>
-                   <div className ="col-md-4">
+                   <div className ="col-md-4 mt-5">
                     <img className=" img-responsive" src=""></img>
                    </div>
                </div>
                <hr></hr>
-             <div className="container">
+            {/*  <div className="container">
              <div className="row">
              <div class="column">
     <div class="card1">
@@ -130,13 +145,69 @@ class HomeComponent extends Component {
              </div>
      
              
+            </div> */}
+             <div className="container">
+            <div className="row">
+            {this.state.products.slice(2,6).map(blog=>
+              <div className="col-md-6 mt-5" key={blog.id}>
+         
+         <div class="card1">
+           <div className="hpdiv">
+             <div className="row">
+            <div className="col-md-4">
+           <img className="hpimg" src={blog.img} alt="Jane"/></div></div>
+           <div className="col-md-2">
+           <div class="container">
+          <h2>{blog.productname}</h2>
+          <p class="title">oneplus  mobiles</p>
+          <p></p>
+          <p>example@example.com</p>
+          </div>
+         </div>
+         </div>
+         </div>
+              </div>)}
             </div>
-                  <div className="home-headline"><span>featured mobiles</span></div>
-                  <hr id="hr1"/>
             </div>
-            
 
 
+
+
+
+
+
+
+
+
+
+
+                  <div className="home-headline mt-5"><span>featured mobiles</span></div>
+                  <hr className="mb-5" id="hr1"/>
+
+
+
+
+            </div>
+            <div className="container ">
+             <div className="row">
+             
+            {this.state.blogs.slice(0,3).map(blog=>
+            <div class="column" key={blog.id}>
+         <div class="card1">
+         <img className="styel" src={blog.img} alt="Jane"/>
+         <div class="container">
+          <h2>{blog.productname}</h2>
+          <p class="title">oneplus  mobiles</p>
+          <p></p>
+          <p>example@example.com</p>
+          <p><button class="button" onClick={this.view} >View blog</button></p>
+         </div>
+         </div>
+         </div>
+         )} 
+      
+         </div>
+         </div>
 
 
 
@@ -208,20 +279,23 @@ class HomeComponent extends Component {
 
 
 
-            <div>
+           
                  {/* <button className="btn btn-primary mt-5" onClick={this.list}> list</button> */}
                 {/*  <button className="btn btn-primary" onClick={this.adduser}> signup</button> */}
-
+ {/* <li className="list-group-item" onClick={this.addproduct}>addproduct</li>  */}
+  {/*  <li className="list-group-item" onClick={this.list}>List</li> */}
+  <div>
                 <div className="col-3 mt-5">
-                  {/* <li className="list-group-item" onClick={this.addproduct}>addproduct</li>  */}
+                 
                  <li className="list-group-item" onClick={this.viewproducts}>products</li>
-                {/*  <li className="list-group-item" onClick={this.list}>List</li> */}
+               
                  <li className="list-group-item" onClick={this.login}>login</li>
                  <li className="list-group-item" onClick={this.Admin}>Admin</li>
+                 <li className="list-group-item" onClick={this.Adminhome}>Admin</li>
                  </div>
 
             </div>
-          <Footercomponent />
+          <Footercomponent /> 
             </React.Fragment>
         )
     }

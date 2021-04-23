@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const user_urls= "http://localhost:8081/user/allUsers";
-const signup_url="http://localhost:8081/signUp";
+const user_urls= "http://localhost:8086/allUsers";
+const signup_url="http://localhost:8086/signUp";
 class userservice
 {
 

@@ -66,12 +66,12 @@ export default class addblogs extends Component {
             <React.Fragment>
                 <Admin/>
                 <div className="col-md-12">
-             <div className="addpimg">
+             <div className="addpimg1">
           <section  className="container-fluid">
           <section className="row justify-content-center">
             <section className="col-12 col-sm-8 col-md-8">
             <form className="form-container1">
-              <h1>Add product</h1>
+              <h1>Add Blog</h1>
               <div className="user-details">
               <div className="form-group">
     <label htmlfor="productname">  Product  CODE </label>

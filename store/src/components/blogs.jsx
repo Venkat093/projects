@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import blogservices from '../services/blogservices';
 import Admin from './Admin';
+import Adminfooter from './adminfooter'
 export default class blogs extends Component {
     constructor(props) {
         super(props)
@@ -10,8 +11,6 @@ export default class blogs extends Component {
             
         }
        
-      
-      
     }
     componentDidMount()
      {
@@ -19,6 +18,9 @@ export default class blogs extends Component {
              this.setState({blogs :res.data});
          });
      } 
+     updateblog(id){
+        this.props.history.push(`/updateblog/${id}`);
+       }
     render() {
         return (
             <React.Fragment>
@@ -36,10 +38,11 @@ export default class blogs extends Component {
                          <div >
                              {this.state.blogs.map(blog=>
                                   <div class="row">
-                                  <div class="col-md-7 mt-5">
+                                  <div class="col-md-7 mt-5 mb-5">
                                     <h4>{blog.headline}</h4>
                                     <h2>{blog.productname}</h2>
                                     <p className="para">{blog.discription}</p>
+                                    <button className="btn btn-info btn-large" onClick={()=>this.updateblog(blog.id)}>update</button>
                                  </div>
                                    <div id="box" class="box col-md-3 ml-4 mt-5 p-2 "><img id="boximg" src={blog.img} alt=""/></div>
                                   </div>
@@ -50,7 +53,7 @@ export default class blogs extends Component {
                     </div>
 
                 </div>
-                
+                <Adminfooter/>
             </React.Fragment>
         )
     }

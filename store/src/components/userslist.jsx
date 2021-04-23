@@ -24,8 +24,8 @@ import {Link} from "react-router-dom";
              <div className="row">
                <tatble className="table striped bordered hover">
                    <thead>
-                       <tr>
-                           <th>Firstname</th>
+                       <tr className="tr">
+                           <th >Firstname</th>
                            <th>Last name</th>
                            <th>username</th>
                            <th>roles</th>
@@ -37,7 +37,7 @@ import {Link} from "react-router-dom";
                        {
                            this.state.users.map(
                             user =>
-                            <tr key ={user.id}>
+                            <tr key ={user.username}>
                                 <td>{user.firstName}</td>
                                 <td>{user.lastName}</td>
                                 <td>{user.username}</td>

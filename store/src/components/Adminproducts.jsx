@@ -35,9 +35,9 @@ import Admin from "../components/Admin"
         const products= paginate(allproducts, currentPage,pageSize); 
         return (
             <React.Fragment>
-<Admin/>
+            <Admin/>
             <div>
-                <Link to ="Admin">Back</Link>
+                <Link to ="Adminhome">Back</Link>
                  <table className="table striped bordered hover">
                    <thead>
                        <tr>
@@ -87,7 +87,7 @@ import Admin from "../components/Admin"
 
             />
             </div>
-            <Adminfooter/>
+             <Adminfooter/>
             </React.Fragment>
 
 
